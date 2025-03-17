@@ -1,196 +1,321 @@
 <html>
-  <head>
-    <title>Pertemuan 2 HTML Dasar</title>
-    <style>
-      /* Reset default margin dan padding */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: Arial, sans-serif;
-      }
 
-      body {
-        background-color: #f4f4f4;
-        color: #333;
-        padding: 20px;
-      }
+<head>
+  <style>
+    /* Reset default margin dan padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-      header {
-        background: #0044cc;
-        color: white;
-        padding: 15px;
-        text-align: center;
-      }
+    body {
+      background-color: #f4f4f4;
+      color: #333;
+      padding: 20px;
+    }
 
-      header a {
-        color: white;
-        text-decoration: none;
-        font-size: 18px;
-        font-weight: bold;
-      }
+    header {
+      background: hsl(220, 12%, 29%);
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
 
-      main {
-        text-align: center;
-        margin: 20px 0;
-      }
+    header a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+    }
 
-      section {
-        background: white;
-        padding: 20px;
-        margin: 20px 0;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
+    main {
+      text-align: center;
+      margin: 20px 0;
+    }
 
-      h2 {
-        color: #0044cc;
-      }
+    section {
+      background: white;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-      /* Style tabel */
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 10px;
-      }
+    h2 {
+      color: #21242b;
+    }
 
-      th, td {
-        border: 1px solid #ddd;
-        padding: 10px;
-        text-align: center;
-      }
+    /* Style tabel */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
 
-      th {
-        background-color: #0044cc;
-        color: white;
-      }
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
 
-      /* Style gambar */
-      img {
-        display: block;
-        margin: 10px auto;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-      }
+    th {
+      background-color: #333;
+      color: white;
+    }
 
-      /* Style form */
-      form {
-        max-width: 400px;
-        margin: auto;
-        padding: 20px;
-        background: #f9f9f9;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
+    /* Style gambar */
+    img {
+      display: block;
+      margin: 10px auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
 
-      input, select, button {
-        width: 100%;
-        padding: 10px;
-        margin: 5px 0;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-      }
+    /* Style untuk form agar lebih rapi */
+    form {
+      width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
 
-      button {
-        background-color: #0044cc;
-        color: white;
-        font-size: 16px;
-        cursor: pointer;
-      }
+    /* Style untuk judul form */
+    h2 {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      position: relative;
+    }
 
-      button:hover {
-        background-color: #0033a0;
-      }
+    h2::after {
+      content: "";
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: #333;
+      margin: 5px auto 0;
+      border-radius: 3px;
+    }
 
-      footer {
-        text-align: center;
-        padding: 10px;
-        background: #0044cc;
-        color: white;
-        margin-top: 20px;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <a href="https://ipiwja.ac.id">Home</a>
-    </header>
+    /* Style untuk label */
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
 
-    <main id="main" class="main">
-      <h1>Pertemuan 2</h1>
-      <h2>HTML Dasar</h2>
-      <p>Hi</p>
-    </main>
+    /* Style untuk input, select, dan textarea */
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+      outline: none;
+    }
 
-    <section>
-      <h2>Hello World</h2>
-    </section>
+    /* Style untuk input file */
+    input[type="file"] {
+      padding: 5px;
+      border: none;
+      background: #f4f4f4;
+    }
 
-    <section id="paragraf">
-      <h2>Paragraf</h2>
-      <p>Pertemuan dasar HTML membuat paragraf sederhana dengan huruf 
-        <i>miring</i>, <b>tebal</b>.
-      </p>
-      <ul>
-        <li>1</li>
-        <li>2</li>
-      </ul>
-      <ol>
-        <li>Satu</li>
-        <li>Dua</li>
-      </ol>
-    </section>
+    /* Style untuk radio button dan checkbox */
+    .radio-group,
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-    <section id="table">
-      <h2>Table</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Jan</th>
-            <th>Feb</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>2</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>4</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+    .radio-group input,
+    .checkbox-group input {
+      width: auto;
+    }
 
-   <section id="gambar">
-      <h2>Gambar</h2>
-      <img src="motor.jpg" alt= hight="200" width="300">
-    </section>
+    /* Style untuk tombol */
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-    <section id="form">
-      <h2>Form</h2>
-      <form>
+    /* Tombol Cancel */
+    button[type="button"] {
+      background-color: #f4f4f4;
+      color: black;
+      border: 1px solid #ccc;
+    }
+
+    /* Hover efek tombol Cancel */
+    button[type="button"]:hover {
+      background-color: #e0e0e0;
+    }
+
+    /* Tombol Login */
+    button[type="submit"] {
+      background-color: #0044ccb6 ;
+      color: white;
+    }
+
+    /* Hover efek tombol Login */
+    button[type="submit"]:hover {
+      background-color: #0033a0e1;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background: #333;
+      color: white;
+      margin-top: 20px;
+    }
+  </style>
+
+  <title>Pertemuan 2 HTML Dasar</title>
+</head>
+
+<body>
+  <header>
+    <a href="https://ipiwja.ac.id">Home</a>
+  </header>
+
+  <main id="main" class="main">
+    <h1>Pertemuan 2</h1>
+    <h2>HTML Dasar</h2>
+    <b>Hi</b>
+  </main>
+
+  <section>
+    <h2>Hello World</h2>
+  </section>
+
+  <section id="paragraf">
+    <h2>Paragraf</h2>
+    <p>Pertemuan dasar HTML membuat paragraf sederhana dengan huruf
+      <i>miring</i>, <b>tebal</b>.
+    </p>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+    </ul>
+    <ol>
+      <li>Satu</li>
+      <li>Dua</li>
+    </ol>
+  </section>
+
+  <section id="table">
+    <h2>Table</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Jan</th>
+          <th>Feb</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>4</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="gambar">
+    <h2>Gambar</h2>
+    <img src="motor.jpg" alt="Gambar Motor" height="200" width="300">
+  </section>
+
+  <section id="form">
+    <h2>Form</h2>
+    <form>
+      <div class="form-group">
         <label>Username:</label>
         <input type="text">
-        
+      </div>
+
+      <div class="form-group">
         <label>Password:</label>
         <input type="password">
-        
-        <label>Warna:</label>
+      </div>
+
+      <div class="form-group">
+        <label>Pilih Warna:</label>
         <input type="color">
-        
+      </div>
+
+      <div class="form-group">
+        <label>Tanggal Lahir:</label>
+        <input type="date">
+      </div>
+
+      <div class="form-group">
+        <label>Upload File:</label>
+        <input type="file">
+      </div>
+
+      <div class="form-group">
+        <label>Cari Sesuatu:</label>
+        <input type="search" placeholder="Cari...">
+      </div>
+
+      <div class="form-group">
+        <label>Jenis Kelamin:</label>
+        <div class="radio-group">
+          <label><input type="radio" name="gender" value="Laki-laki"> Laki-Laki</label>
+          <label><input type="radio" name="gender" value="Perempuan"> Perempuan</label>
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label>Hobi:</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="hobi" value="Membaca"> Membaca</label>
+          <label><input type="checkbox" name="hobi" value="Olahraga"> Olahraga</label>
+          <label><input type="checkbox" name="hobi" value="Musik"> Musik</label>
+          <label><input type="checkbox" name="hobi" value="Game"> Game</label>
+        </div>
+      </div>
+
+      <div class="form-group">
         <label>Dropdown:</label>
         <select>
           <option>1</option>
           <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
         </select>
-        
-        <input type="submit" value="Cancel">
-        <button type="submit">Login</button>
-      </form>
-    </section>
+      </div>
 
-    <footer>&copy; 2025</footer>
-  </body>
+      <button type="button">Cancel</button>
+      <button type="submit">Login</button>
+
+    </form>
+  </section>
+
+  <footer>&copy; Muhamad Aprizal 2025</footer>
+</body>
+
 </html>
