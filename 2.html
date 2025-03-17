@@ -1,44 +1,196 @@
 <html>
   <head>
-    <title>Pertemuan 2 HTML dasar</title>
+    <title>Pertemuan 2 HTML Dasar</title>
+    <style>
+      /* Reset default margin dan padding */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background-color: #f4f4f4;
+        color: #333;
+        padding: 20px;
+      }
+
+      header {
+        background: #0044cc;
+        color: white;
+        padding: 15px;
+        text-align: center;
+      }
+
+      header a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      main {
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      section {
+        background: white;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        color: #0044cc;
+      }
+
+      /* Style tabel */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+
+      th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+      }
+
+      th {
+        background-color: #0044cc;
+        color: white;
+      }
+
+      /* Style gambar */
+      img {
+        display: block;
+        margin: 10px auto;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Style form */
+      form {
+        max-width: 400px;
+        margin: auto;
+        padding: 20px;
+        background: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      input, select, button {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      button {
+        background-color: #0044cc;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0033a0;
+      }
+
+      footer {
+        text-align: center;
+        padding: 10px;
+        background: #0044cc;
+        color: white;
+        margin-top: 20px;
+      }
+    </style>
   </head>
   <body>
-    <header><a href="ipiwja.ac.id">Home</a></header>
-    <main id="main" class="main">hi<br></main>
-    <section>hello world</section>
+    <header>
+      <a href="https://ipiwja.ac.id">Home</a>
+    </header>
 
-    <section id="gambar">
-      <h2>Gambar</h2>
-      <img src="motor.jpg" alt= hight="200" width="300">
+    <main id="main" class="main">
+      <h1>Pertemuan 2</h1>
+      <h2>HTML Dasar</h2>
+      <p>Hi</p>
+    </main>
+
+    <section>
+      <h2>Hello World</h2>
     </section>
-    
+
     <section id="paragraf">
-      <p>
-        <h1>Pertemuan 2</h1>
-        <h2>HTML Dasar</h2>
-        pertemuan dasar HTML membuat paragraf <br>sederhana dengan huruf <i>miring</i>, <b>tebal</b>
+      <h2>Paragraf</h2>
+      <p>Pertemuan dasar HTML membuat paragraf sederhana dengan huruf 
+        <i>miring</i>, <b>tebal</b>.
       </p>
       <ul>
         <li>1</li>
         <li>2</li>
       </ul>
       <ol>
-        <li>satu</li>
-        <li>dua</li>
+        <li>Satu</li>
+        <li>Dua</li>
       </ol>
     </section>
-    <section id="tanle">
-        <h2>table</h2>
-        <table border="1">
-            <thead>
-                <tr><th>jan</th><th>feb</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>1</td><td>2</td></tr>
-                <tr><td>3</td><td>4</td></tr>
-            </tbody>
-        </table>
+
+    <section id="table">
+      <h2>Table</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Jan</th>
+            <th>Feb</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>4</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
-    <footer>@2025</footer>
+
+    <section id="gambar">
+      <h2>Gambar</h2>
+      <img src="motor.jpg" alt= hight="200" width="300">
+    </section>
+
+    <section id="form">
+      <h2>Form</h2>
+      <form>
+        <label>Username:</label>
+        <input type="text">
+        
+        <label>Password:</label>
+        <input type="password">
+        
+        <label>Warna:</label>
+        <input type="color">
+        
+        <label>Dropdown:</label>
+        <select>
+          <option>1</option>
+          <option>2</option>
+        </select>
+        
+        <input type="submit" value="Cancel">
+        <button type="submit">Login</button>
+      </form>
+    </section>
+
+    <footer>&copy; 2025</footer>
   </body>
 </html>
