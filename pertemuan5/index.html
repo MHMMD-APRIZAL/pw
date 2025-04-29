@@ -1,38 +1,126 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Manipulasi DOM</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Belajar JavaScript & DOM - Bintang</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    :root {
+      --primary-color: #4caf50;
+      --hover-color: #43a047;
+      --background: #f0f2f5;
+      --box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      --text-color: #333;
+      --header-color: #2c3e50;
     }
-    #judul {
-      color: black;
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 40px;
+      background: var(--background);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: var(--header-color);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1rem;
+      margin: 0.5rem 0;
+    }
+
+    .box {
+      width: 150px;
+      height: 150px;
+      background-color: yellow;
+      margin: 20px 0;
+      border-radius: 10px;
+      box-shadow: var(--box-shadow);
+      transition: background-color 0.4s ease, transform 0.3s ease;
+      clip-path: polygon(
+        50% 0%, 
+        61% 35%, 
+        98% 35%, 
+        68% 57%, 
+        79% 91%, 
+        50% 70%, 
+        21% 91%, 
+        32% 57%, 
+        2% 35%, 
+        39% 35%
+      );
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .box:hover {
+      transform: translateY(-5px) scale(1.05);
+    }
+
+    button {
+      padding: 12px 24px;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: var(--hover-color);
+      transform: scale(1.02);
+    }
+
+    #status {
+      margin-top: 1rem;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--header-color);
     }
   </style>
 </head>
 <body>
-  <h1 id="judul">Teks dengan perubahan warna</h1>
-  <p id="paragraf">Teks sebelum diubah</p>
-  <button onclick="ubahTeks()">Ubah Teks</button>
 
-  <ul id="daftar">
-    <li>Item</li>
-  </ul>
-  <button onclick="tambahItem()">Tambah Item</button>
+  <h1>Belajar JavaScript & DOM</h1>
+  <p>Klik tombol untuk mengganti warna bintang:</p>
+
+  <div class="box" id="colorBox"></div>
+  <button id="changeBtn">Ganti Warna</button>
+  <p id="status">Warna saat ini: Kuning</p>
 
   <script>
-    function ubahTeks() {
-      document.getElementById("paragraf").textContent = "Teks telah diubah!";
-      document.getElementById("judul").style.color = "blue";
-    }
+    const box = document.getElementById('colorBox');
+    const button = document.getElementById('changeBtn');
+    const statusText = document.getElementById('status');
 
-    function tambahItem() {
-      const ul = document.getElementById("daftar");
-      const liBaru = document.createElement("li");
-      liBaru.textContent = "Item";
-      ul.appendChild(liBaru);
-    }
+    const colors = ['yellow', 'mediumseagreen', 'dodgerblue', 'mediumpurple', 'tomato'];
+    let colorIndex = 0;
+
+    button.addEventListener('click', () => {
+      colorIndex = (colorIndex + 1) % colors.length;
+      const newColor = colors[colorIndex];
+      box.style.backgroundColor = newColor;
+
+      const capitalizedColor = newColor.charAt(0).toUpperCase() + newColor.slice(1);
+      statusText.textContent = `Warna saat ini: ${capitalizedColor}`;
+    });
   </script>
+
 </body>
 </html>
