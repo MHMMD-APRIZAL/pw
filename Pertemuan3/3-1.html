@@ -1,70 +1,149 @@
 <html>
+
 <head>
   <title> Pertemuan 3 Styling dengan CSS </title>
-<style>
-input{
 
-  width:100%;
-}
-  
-</style>
+  <style>
+    section {
+      border: 1px solid rgb(0, 0, 0);
+      padding: 16px;
+      margin-bottom: 16px;
+      border-radius: 5px;
+    }
+
+    input,
+    select {
+      padding: 8px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+
+    #username {
+      background: green;
+    }
+
+    .bg-grey {
+      background: grey;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .cancel {
+      background: red;
+      color: white;
+    }
+
+    .login {
+      background: blue;
+      color: white;
+    }
+
+    /* Responsif untuk layar kecil */
+    @media screen and (max-width: 450px) {
+      .button-group {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+      }
+    }
+  </style>
 
 </head>
-  <body>
-<header><a href="ipwija.ac.id"> Home </a></header>
-<main> hi 
-<br/> 
-</main id="main" class="main">    
-<section>Halo Word</section>
 
-    <section id="gambar">
-    <img src="edu.png" height="200" width="200">  
-    </section>
+<body>
+  <header><a href="ipwija.ac.id"> Home </a></header>
+  <main> hi
+    <br />
+  </main id="main" class="main">
+  <section>Halo Word</section>
 
-    <section id="form">
-      <form>
-<label>Username:</label><input type="text">
-<label>Password:</label><input type="password">
-<label>Warna:</label><input type="color">
-<label>Dropdown:</label>
-        <select>
-          <option>1</option>
-          <option>2</option>
-        </select>
-<input type="submit" value="cancel">
-        <button> login</button>
-      </form>
-    </section>
+  <section id="gambar">
+    <img src="motor.jpg" height="200" width="200">
+  </section>
 
-    <section id="paragraf">
-<p>
-<h1> Pertemuan 2</h1>  
-<h2> HTML dasar </h2>
-pertemuan 2, dasar HTML membuat paragraf <br/> sederhana dengan huruf <i>miring </i>,<b>Tebal</b>
-</p>
-  <ul>
-    <li>1</li>
-    <li>2</li>
-  </ul>
-  <ol>
-    <li>satu</li>
-    <li>dua</li>
-  </ol>
-</section>
-<section id="table">
-<h2>table</h2>
-<table border="1">
-<thead>
-  <tr><th>jan </th><th>feb </th></tr>
-</thead>  
-<tbody>
-<tr><td>1 </td><td>2 </td></tr>
-<tr><td>3 </td><td>4 </td></tr>
-</tbody>
-</table>
-</section>
+  <section id="form" class="col-">
+    <form>
+      <label>Username:</label>
+      <input id="username" type="text">
 
-        
-<footer>@2025</footer>    
-  </body>
+      <label>Password:</label>
+      <input class="bg-grey" type="password">
+
+      <label>Warna:</label>
+      <input class="bg-grey" type="color">
+
+      <label>Dropdown:</label>
+      <select>
+        <option>1</option>
+        <option>2</option>
+      </select>
+
+      <div class="button-group">
+        <button type="button" class="cancel">Cancel</button>
+        <button type="submit" class="login">Login</button>
+      </div>
+    </form>
+  </section>
+
+  <section id="paragraf" class="col-">
+    <p>
+    <h1> Pertemuan 2</h1>
+    <h2> HTML dasar </h2>
+    pertemuan 2, dasar HTML membuat paragraf <br /> sederhana dengan huruf <i>miring </i>,<b>Tebal</b>
+    </p>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+    </ul>
+    <ol>
+      <li>satu</li>
+      <li>dua</li>
+    </ol>
+  </section>
+
+  <section id="table" class="col-">
+    <h2>table</h2>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>jan </th>
+          <th>feb </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1 </td>
+          <td>2 </td>
+        </tr>
+        <tr>
+          <td>3 </td>
+          <td>4 </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer>@2025</footer>
+</body>
+
 </html>
