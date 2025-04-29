@@ -1,13 +1,38 @@
-<p id="teks">Ini teks yang bisa disembunyikan!</p>
-<button onclick="toggleTeks()">Sembunyikan/Tampilkan</button>
-
-<script>
-  function toggleTeks() {
-    let teks = document.getElementById("teks");
-    if (teks.style.display === "none") {
-      teks.style.display = "block";
-    } else {
-      teks.style.display = "none";
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Manipulasi DOM</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
     }
-  }
-</script>
+    #judul {
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="judul">Teks dengan perubahan warna</h1>
+  <p id="paragraf">Teks sebelum diubah</p>
+  <button onclick="ubahTeks()">Ubah Teks</button>
+
+  <ul id="daftar">
+    <li>Item</li>
+  </ul>
+  <button onclick="tambahItem()">Tambah Item</button>
+
+  <script>
+    function ubahTeks() {
+      document.getElementById("paragraf").textContent = "Teks telah diubah!";
+      document.getElementById("judul").style.color = "blue";
+    }
+
+    function tambahItem() {
+      const ul = document.getElementById("daftar");
+      const liBaru = document.createElement("li");
+      liBaru.textContent = "Item";
+      ul.appendChild(liBaru);
+    }
+  </script>
+</body>
+</html>
