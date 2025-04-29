@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulasi HTML + CSS dengan JavaScript</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        #dynamicContent { padding: 10px; border: 1px solid #ddd; margin: 10px 0; }
+        .highlight { color: white; background-color: #2980b9; padding: 5px; border-radius: 4px; }
+        .hidden { display: none; }
+        .animate { transition: all 0.3s ease; transform: scale(1.1); }
+    </style>
+</head>
+<body>
+    <h1>Manipulasi HTML + CSS dengan JavaScript</h1>
+
+    <button onclick="changeContent()">Ubah Konten</button>
+    <button onclick="toggleVisibility()">Tampilkan/Sembunyikan</button>
+    <button onclick="addAnimation()">Animasi Efek</button>
+
+    <div id="dynamicContent">Konten ini akan diubah secara dinamis.</div>
+
+    <form onsubmit="validateForm(event)">
+        <label for="name">Nama:</label>
+        <input type="text" id="name" name="name" required>
+        <button type="submit">Kirim</button>
+    </form>
+
+    <script>
+        function changeContent() {
+            const content = document.getElementById('dynamicContent');
+            content.innerHTML = 'Konten telah diperbarui!';
+            content.classList.toggle('highlight');
+        }
+
+        function toggleVisibility() {
+            const content = document.getElementById('dynamicContent');
+            content.classList.toggle('hidden');
+        }
+
+        function addAnimation() {
+            const content = document.getElementById('dynamicContent');
+            content.classList.toggle('animate');
+        }
+
+        function validateForm(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            if (name.trim() === '') {
+                alert('Nama tidak boleh kosong!');
+            } else {
+                alert('Formulir berhasil dikirim!');
+            }
+        }
+    </script>
+
+</body>
+</html>

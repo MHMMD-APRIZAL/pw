@@ -1,0 +1,13 @@
+<p id="teks">Ini teks yang bisa disembunyikan!</p>
+<button onclick="toggleTeks()">Sembunyikan/Tampilkan</button>
+
+<script>
+  function toggleTeks() {
+    let teks = document.getElementById("teks");
+    if (teks.style.display === "none") {
+      teks.style.display = "block";
+    } else {
+      teks.style.display = "none";
+    }
+  }
+</script>
