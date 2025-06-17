@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -18,15 +18,21 @@
     <h1>Muhamad Aprijal</h1>
     <p class="subtitle">He/Him • Web Developer</p>
     <p>Jakarta, Indonesia • <a href="https://wawan.sismadi.com">Muhamad.Aprizal.com</a></p>
-    <p><strong>Aprizal Langit Solusi</strong> — Universitas indonesia</p>
+    <p><strong>Aprizal Langit Solusi</strong> — Universitas Indonesia</p>
   </div>
 
   <div class="action-buttons">
+    <button id="logoutBtn" style="display:none;">Logout</button>
+  </div>
 
-
-    <button id="loginBtn">Login untuk akses data</button>
-<button id="logoutBtn">Logout</button>
-
+  <!-- Login Form -->
+  <div id="loginFormBox">
+    <h3>Login untuk akses data</h3>
+    <form id="loginForm">
+      <label>Email:<br><input type="email" id="email" required /></label><br><br>
+      <label>Password:<br><input type="password" id="password" required /></label><br><br>
+      <button type="submit">Login</button>
+    </form>
   </div>
 
   <div id="content"></div>
@@ -34,8 +40,8 @@
   <div class="content-card">
     <h3>Sosial Media</h3>
     <ul>
-       <li><strong>Instagram :</strong> https://www.instagram.com/mhmmdaprizall_17/ </li>
-       <li><strong>Github :</strong> https://github.com/MHMMD-APRIZAL </li>
+       <li><strong>Instagram:</strong> https://www.instagram.com/mhmmdaprizall_17/</li>
+       <li><strong>Github:</strong> https://github.com/MHMMD-APRIZAL</li>
     </ul>
   </div>
 </div>
@@ -48,39 +54,22 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 const content = document.getElementById('content')
+const loginFormBox = document.getElementById('loginFormBox')
+const logoutBtn = document.getElementById('logoutBtn')
 
-// Coba login manual (bisa diganti pakai form)
-async function login() {
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email: 'user@example.com', // ganti dengan akun terdaftar
-    password: 'password123'     // ganti sesuai user
-  })
-
-  if (error) {
-    alert('Login gagal: ' + error.message)
-    return
-  }
-
-  loadData()
-}
-
-async function logout() {
-  await supabase.auth.signOut()
-  content.innerHTML = '<p>Logout berhasil.</p>'
-}
-
-// Load data hanya milik user yang login
 async function loadData() {
   const {
     data: { user }
   } = await supabase.auth.getUser()
 
   if (!user) {
-
     content.innerHTML = '<p>Silakan login untuk melihat data.</p>'
     return
   }
-  
+
+  loginFormBox.style.display = 'none'
+  logoutBtn.style.display = 'inline-block'
+
   const { data, error } = await supabase
     .from('web3')
     .select('*')
@@ -102,15 +91,38 @@ async function loadData() {
   })
 
   content.innerHTML = out
-
 }
 
-document.getElementById('loginBtn').addEventListener('click', login)
-document.getElementById('logoutBtn').addEventListener('click', logout)
+// Handle login
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault()
+  const email = document.getElementById('email').value
+  const password = document.getElementById('password').value
 
+  const { error } = await supabase.auth.signInWithPassword({ email, password })
+
+  if (error) {
+    alert('Login gagal: ' + error.message)
+    return
+  }
+
+  loadData()
+})
+
+// Logout
+logoutBtn.addEventListener('click', async () => {
+  await supabase.auth.signOut()
+  content.innerHTML = ''
+  loginFormBox.style.display = 'block'
+  logoutBtn.style.display = 'none'
+})
+
+// Cek login saat halaman pertama kali dimuat
 window.addEventListener('DOMContentLoaded', async () => {
   const { data: { user } } = await supabase.auth.getUser()
-  if (user) loadData()
+  if (user) {
+    loadData()
+  }
 })
 </script>
 
