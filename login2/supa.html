@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Wawan Sismadi</title>
+  <title>Muhamad Aprijal</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -15,10 +15,10 @@
   </div>
 
   <div class="header-text">
-    <h1>Wawan Sismadi</h1>
+    <h1>Muhamad Aprijal</h1>
     <p class="subtitle">He/Him • Web Developer</p>
-    <p>Jakarta, Indonesia • <a href="https://wawan.sismadi.com">wawan.sismadi.com</a></p>
-    <p><strong>Sismadi Langit Solusi</strong> — Universitas Ahmad Dahlan</p>
+    <p>Jakarta, Indonesia • <a href="https://wawan.sismadi.com">Muhamad.Aprizal.com</a></p>
+    <p><strong>Aprizal Langit Solusi</strong> — Universitas indonesia</p>
   </div>
 
   <div class="action-buttons">
@@ -34,8 +34,8 @@
   <div class="content-card">
     <h3>Sosial Media</h3>
     <ul>
-      <li><strong>linkedin :</strong> http://linkedin.com/in/sismadi</li>
-      <li><strong>credly :</strong> https://www.credly.com/users/wawan-sismadi</li>
+       <li><strong>Instagram :</strong> https://www.instagram.com/mhmmdaprizall_17/ </li>
+       <li><strong>Github :</strong> https://github.com/MHMMD-APRIZAL </li>
     </ul>
   </div>
 </div>
@@ -80,10 +80,7 @@ async function loadData() {
     content.innerHTML = '<p>Silakan login untuk melihat data.</p>'
     return
   }
-
-
-
-
+  
   const { data, error } = await supabase
     .from('web3')
     .select('*')
@@ -108,10 +105,8 @@ async function loadData() {
 
 }
 
-
 document.getElementById('loginBtn').addEventListener('click', login)
 document.getElementById('logoutBtn').addEventListener('click', logout)
-
 
 window.addEventListener('DOMContentLoaded', async () => {
   const { data: { user } } = await supabase.auth.getUser()
