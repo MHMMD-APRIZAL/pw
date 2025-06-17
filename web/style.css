@@ -28,7 +28,7 @@ a {
 
 .header-bg {
   height: 200px;
-  background-image: url('bg.png');
+  background-image: blue;
   background-size: cover;
   background-position: center;
 }
