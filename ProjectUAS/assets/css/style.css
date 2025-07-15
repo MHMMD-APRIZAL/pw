@@ -1,0 +1,579 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ===== 1. ROOT VARIABLES & GLOBAL RESET ===== */
+:root {
+    --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+    --primary-color: #5E72E4;
+    --primary-hover: #4a5cc0;
+    --secondary-color: #F4F5F7;
+    --surface-color: #FFFFFF;
+    --background-color: #F8F9FE;
+    
+    --text-primary: #32325d;
+    --text-secondary: #525f7f;
+    --border-color: #E9ECEF;
+
+    --success-color: #2DCE89;
+    --error-color: #F5365C;
+    --warning-color: #FB6340;
+    --info-color: #11CDEF;
+
+    --gradient-primary: linear-gradient(87deg, #5E72E4 0, #825EE4 100%);
+    --shadow-color: 22, 28, 45;
+    --shadow-sm: 0 1px 3px rgba(var(--shadow-color), 0.05);
+    --shadow-md: 0 4px 6px rgba(var(--shadow-color), 0.06), 0 1px 3px rgba(var(--shadow-color), 0.08);
+    --shadow-lg: 0 15px 35px rgba(var(--shadow-color), 0.1), 0 5px 15px rgba(var(--shadow-color), 0.05);
+
+    --border-radius: .375rem;
+    --transition-smooth: all 0.2s ease-in-out;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family-sans);
+    background-color: var(--background-color);
+    color: var(--text-secondary);
+    line-height: 1.6;
+    padding: 20px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h2, h3 {
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+h2 { text-align: center; font-size: 1.75rem; }
+h3 { font-size: 1.25rem; }
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+a:hover { color: var(--primary-hover); }
+
+/* ===== 2. CONTAINERS & LAYOUT ===== */
+.content-wrapper, form {
+    width: 100%;
+    max-width: 850px;
+    margin: 20px auto;
+    background: var(--surface-color);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+}
+
+/* ===== 3. FORM STYLES (MODIFIKASI FINAL) ===== */
+form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+}
+
+/* KITA BERI TINGGI YANG PASTI PADA SEMUA INPUT */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form select,
+form textarea {
+    height: 48px; /* TINGGI TETAP */
+    padding: 0.875rem 1rem;
+    padding-right: 45px; /* Tetap beri ruang untuk ikon */
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    font-family: var(--font-family-sans);
+    transition: var(--transition-smooth);
+    background-color: var(--surface-color);
+    color: var(--text-secondary);
+    box-sizing: border-box; /* Pastikan padding tidak menambah tinggi */
+}
+/* Khusus untuk textarea, tingginya bisa otomatis */
+form textarea {
+    height: auto;
+    padding-right: 1rem; /* Textarea tidak punya ikon, jadi padding normal */
+}
+
+
+.input-wrapper {
+    position: relative;
+    margin-bottom: 1.5rem;
+    /* Kita tidak perlu properti apa pun lagi di sini selain yang sudah ada */
+}
+
+.input-wrapper .password-toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 48px;         /* 1. Samakan tingginya dengan input */
+    line-height: 48px;    /* 2. Ini adalah TRIK UTAMA: samakan line-height dengan height */
+    width: 45px;
+    text-align: center;   /* 3. Posisikan ikon di tengah area kliknya */
+
+    cursor: pointer;
+    color: #adb5bd;
+    transition: var(--transition-smooth);
+    
+    /* Hapus properti di bawah ini jika masih ada dari kode sebelumnya */
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* transform: translateY(-50%); */
+}
+
+.input-wrapper .password-toggle:hover {
+    color: var(--primary-color);
+}
+
+form input:focus, form select:focus, form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(94, 114, 228, 0.25);
+}
+
+form button[type="submit"] {
+    display: inline-block;
+    width: auto;
+    padding: 0.875rem 2rem;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-sm);
+    text-transform: uppercase;
+    letter-spacing: .025em;
+}
+
+form button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+form button[type="submit"]:disabled, .button--loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* ===== 4. AUTH PAGES (LOGIN & REGISTER) ===== */
+.login-page, .register-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-image: var(--gradient-primary);
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 450px;
+    padding: 2.5rem;
+    background: var(--surface-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    transform: translateY(0);
+    transition: var(--transition-smooth);
+}
+
+.auth-form input { margin-bottom: 1.25rem; }
+.auth-form .input-wrapper { margin-bottom: 1.25rem; }
+.auth-form button { width: 100%; }
+.auth-footer { margin-top: 1.5rem; color: #8898aa; }
+
+/* ===== 5. DASHBOARD ===== */
+.dashboard-page .content-wrapper { padding: 0; overflow: hidden; }
+
+.dashboard-header {
+    background: var(--gradient-primary);
+    color: white;
+    padding: 2rem 2.5rem;
+}
+.dashboard-header h2 { color: white; text-align: left; }
+
+.dashboard-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 1.5rem 2.5rem;
+    background-color: var(--surface-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dashboard-nav a {
+    padding: 0.6rem 1.2rem;
+    background-color: var(--secondary-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+.dashboard-nav a:hover, .dashboard-nav a.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.dashboard-info { padding: 2.5rem; }
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.95rem;
+}
+.info-row:last-child { border-bottom: none; }
+.info-label { font-weight: 600; color: var(--text-primary); }
+.info-value { font-weight: 500; }
+
+.profile-picture-container {
+    text-align: center;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+#profilePicturePreview {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--surface-color);
+    box-shadow: var(--shadow-md);
+    background-color: var(--secondary-color);
+}
+
+/* ===== 6. TABLE STYLES ===== */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 2rem;
+    background-color: var(--surface-color);
+    box-shadow: var(--shadow-md);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+th, td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color); }
+thead th {
+    background-color: var(--secondary-color);
+    font-weight: 600;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover { background-color: var(--background-color); }
+tbody td { vertical-align: middle; }
+
+/* ===== 7. UTILITY & MESSAGE STYLES ===== */
+.message {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    font-weight: 500;
+    border: 1px solid transparent;
+}
+.message.success { background-color: #f0fefa; color: #0a4d33; border-color: #bcf0da; }
+.message.error { background-color: #feeef2; color: #8a162b; border-color: #fdd8e0; }
+.message.info { background-color: #eaf9fe; color: #064b5c; border-color: #bdecf9; }
+
+/* ===== 8. PAGINATION, ADMIN DASHBOARD & CHARTS ===== */
+.pagination { margin: 2rem 0; text-align: center; }
+.pagination a {
+    margin: 0 4px;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    color: var(--primary-color);
+    border-radius: var(--border-radius);
+}
+.pagination a.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    font-weight: bold;
+}
+.pagination a:hover:not(.active) { background-color: var(--secondary-color); }
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+.stat-card {
+    background-color: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--primary-color);
+    transition: var(--transition-smooth);
+}
+.stat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.stat-card h3 { font-size: 0.8rem; color: #8898aa; margin-bottom: 0.5rem; text-transform: uppercase; }
+.stat-card p { font-size: 2rem; font-weight: 700; color: var(--text-primary); }
+
+.quick-shortcuts { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem; }
+.quick-shortcuts a {
+    flex: 1;
+    min-width: 200px;
+    padding: 1.5rem;
+    text-align: center;
+    background: var(--gradient-primary);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-smooth);
+}
+.quick-shortcuts a:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+
+.chart-container {
+    background-color: var(--surface-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+}
+
+/* ===== 9. MODAL STYLES ===== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 2rem;
+    border: none;
+    width: 90%;
+    max-width: 500px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    animation: slideIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+@keyframes slideIn { from {opacity: 0; transform: translateY(-50px);} to {opacity: 1; transform: translateY(0);} }
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    transition: var(--transition-smooth);
+}
+.close:hover, .close:focus { color: var(--error-color); text-decoration: none; cursor: pointer; }
+#berkasList a {
+    display: block;
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    transition: var(--transition-smooth);
+    color: var(--text-secondary);
+}
+#berkasList a:hover { background-color: var(--secondary-color); color: var(--text-primary); }
+#berkasList a:last-child { border-bottom: none; }
+
+/* ===== 10. RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    body { padding: 10px; }
+    .content-wrapper, form { padding: 1.5rem; }
+    .dashboard-nav { flex-direction: column; align-items: stretch; }
+    .dashboard-nav a { text-align: center; }
+    .info-row { flex-direction: column; align-items: flex-start; gap: 5px; }
+    .quick-shortcuts a { min-width: 100%; }
+}
+
+/* ===== GAYA UNTUK TOMBOL NAVIGASI DAN FILTER ===== */
+
+/* Wadah untuk tombol navigasi di atas */
+.page-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+
+/* Gaya dasar untuk link yang ingin dijadikan tombol */
+.page-actions a {
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--border-radius);
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+}
+.page-actions a:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Warna spesifik untuk setiap tombol */
+.button-secondary { background-color: var(--text-secondary); }
+.button-success { background-color: var(--success-color); }
+.button-danger { background-color: var(--error-color); }
+
+
+/* Wadah untuk area filter */
+.filter-container {
+    background-color: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+
+.filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+.filter-group {
+    display: flex;
+    gap: 15px;
+    flex-grow: 1; /* Membuat grup input mengambil ruang maksimal */
+}
+
+.filter-group input,
+.filter-group select {
+    margin-bottom: 0 !important; /* Hapus margin bawah default dari form */
+    flex: 1; /* Bagikan ruang secara merata */
+}
+
+.filter-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* Tombol utama untuk filter */
+.filter-actions .button-primary {
+    padding: 0.8rem 1.5rem;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+.filter-actions .button-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Tombol untuk reset filter */
+.filter-actions .button-reset {
+    padding: 0.8rem 1.5rem;
+    background-color: var(--secondary-color);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+.filter-actions .button-reset:hover {
+    background-color: #e2e6ea;
+    border-color: #dae0e5;
+}
+
+
+/* ===== GAYA BARU UNTUK AKSI DI DALAM TABEL PESERTA ===== */
+
+.action-container {
+    display: flex;
+    flex-wrap: wrap; /* Izinkan wrap di layar kecil */
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.action-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    flex-grow: 1;
+    min-width: 150px; /* Lebar minimal setiap grup aksi */
+}
+
+.action-group label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.action-group .input-with-button {
+    display: flex;
+    gap: 5px;
+}
+
+.action-group .input-with-button select,
+.action-group .input-with-button input {
+    flex-grow: 1;
+}
+
+.action-group .input-with-button button,
+.action-group .input-with-button .button-danger {
+    flex-shrink: 0; /* Mencegah tombol menyusut */
+}
+
+/* Override gaya tombol lihat berkas agar seragam */
+.lihat-berkas-btn {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+    background-color: var(--secondary-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition-smooth);
+}
+.lihat-berkas-btn:hover {
+    background-color: #e2e6ea;
+    border-color: #dae0e5;
+}
