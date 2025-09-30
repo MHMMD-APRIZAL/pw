@@ -1,0 +1,253 @@
+/* Variabel Warna */
+:root {
+    --color-primary: #2F9EF7; /* Biru Utama */
+    --color-background: #F5F7FA; /* Putih Bersih */
+    --color-text: #1D222F; /* Hitam Solid */
+}
+
+/* Reset Dasar & Tipografi */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    color: var(--color-text);
+}
+
+/* --- Navbar Styling --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: #ffffff; /* Lebih terang dari background body */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.navbar nav a {
+    text-decoration: none;
+    color: var(--color-text);
+    margin: 0 15px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar nav a:hover, .navbar nav a.active {
+    color: var(--color-primary);
+}
+
+/* --- Tombol Styling --- */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-login {
+    background-color: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    margin-left: 20px;
+}
+
+.btn-login:hover {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+    box-shadow: 0 4px 10px rgba(47, 158, 247, 0.4); /* Shadow Biru */
+}
+
+.btn-primary:hover {
+    background-color: #2689e8; /* Sedikit lebih gelap */
+    transform: translateY(-2px);
+}
+
+/* --- Hero Section Styling --- */
+.hero-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 80px 100px;
+    min-height: 70vh;
+    background-color: var(--color-background);
+}
+
+.hero-content {
+    max-width: 500px;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #666;
+}
+
+.hero-image {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Ornamen: Garis Dinamis seperti cipratan air */
+.ornament-line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 8px solid var(--color-primary);
+    opacity: 0.1;
+    transform: translate(-50%, -50%) rotate(15deg);
+}
+
+.car-icon {
+    font-size: 150px;
+    color: var(--color-primary);
+    animation: bounce 2s infinite ease-in-out; /* Animasi sederhana */
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+
+/* --- Features Section Styling --- */
+.features-section {
+    padding: 80px 100px;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.features-section h2 {
+    font-size: 32px;
+    margin-bottom: 50px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    padding: 30px;
+    background-color: var(--color-background);
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #eee;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(47, 158, 247, 0.1); /* Hover shadow Biru Lembut */
+}
+
+.feature-card i {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.icon-blue {
+    color: var(--color-primary);
+}
+
+.feature-card h3 {
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* --- Footer Styling --- */
+.footer {
+    background-color: var(--color-text); /* Hitam Solid untuk kontras */
+    color: var(--color-background);
+    text-align: center;
+    padding: 30px 50px;
+    font-size: 14px;
+}
+
+.footer-links a {
+    color: var(--color-primary);
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* Responsiveness Dasar (Opsional: untuk tampilan HP) */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+    .navbar nav {
+        display: none; /* Sembunyikan navigasi di HP, bisa diganti menu hamburger */
+    }
+    .hero-section {
+        flex-direction: column;
+        padding: 50px 20px;
+    }
+    .hero-content h1 {
+        font-size: 36px;
+        text-align: center;
+    }
+    .hero-content p {
+        text-align: center;
+    }
+    .hero-content {
+        order: 2;
+    }
+    .hero-image {
+        order: 1;
+        margin-bottom: 40px;
+    }
+    .features-section {
+        padding: 50px 20px;
+    }
+}
